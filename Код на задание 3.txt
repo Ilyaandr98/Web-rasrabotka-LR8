@@ -1,0 +1,36 @@
+<html>
+<head>
+<script>
+var canvas;
+var ctx;
+var isDown = false;
+var x = 10, y = 10;
+function init(){
+canvas = document.getElementById('canvas');
+ctx = canvas.getContext('2d');
+document.addEventListener("mouseup", handleUp);
+document.addEventListener("mousedown", handleDown);
+document.addEventListener("mousemove", handleMoved);
+ctx.strokeRect(0,0,600,500);
+ctx.fillStyle = 'blue';
+}
+function handleDown(event) {
+isDown = true;
+ctx.fillStyle = 'red';
+}
+function handleUp(event) {
+isDown = false;
+ctx.fillStyle = 'blue';
+}
+function handleMoved(event) {
+
+x = event.offsetX;
+y = event.offsetY;
+ctx.fillRect(x,y,20,20);
+}
+</script>
+</head>
+<body onload="init();">
+<canvas id="canvas" width="600" height="500"></canvas>
+</body>
+</html>
